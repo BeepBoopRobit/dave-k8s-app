@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sc-deployment
+  name: sc-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sc-deployment
+  template:
+    metadata:
+      labels:
+        app: sc-deployment
+    spec:
+      containers:
+        - image: tya0411/sc:3.14
+          name: sc
+          ports:
+            - containerPort: 5000
+          env:
+            - name: COLOR
+              value: red
+
